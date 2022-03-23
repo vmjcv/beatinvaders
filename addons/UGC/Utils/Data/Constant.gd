@@ -30,7 +30,7 @@ const ugc_content_path = "res://%s"%ugc_content_folder_name
 var ugc_content_globalize_path = ProjectSettings.globalize_path(ugc_content_path)
 
 const ugc_content_pck_folder_name = "UGCContentPCK"
-const ugc_content_pck_path = "res://%s"%ugc_content_pck_folder_name
+const ugc_content_pck_path = "user://%s"%ugc_content_pck_folder_name
 var ugc_content_pck_globalize_path = ProjectSettings.globalize_path(ugc_content_pck_path)
 
 const ugc_game_folder_name = "UGCGame"
@@ -39,7 +39,7 @@ var ugc_game_globalize_path = ProjectSettings.globalize_path(ugc_game_path)
 var ugc_game_input_path = ugc_game_path+"/game_input.cfg"
 
 const ugc_game_pck_folder_name = "UGCGamePCK"
-const ugc_game_pck_path = "res://%s"%ugc_game_pck_folder_name
+const ugc_game_pck_path = "user://%s"%ugc_game_pck_folder_name
 var ugc_game_pck_globalize_path = ProjectSettings.globalize_path(ugc_game_pck_path)
 
 const ugc_temp_folder_name = "UGCTemp"
