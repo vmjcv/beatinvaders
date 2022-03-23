@@ -1,0 +1,161 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/add.png" type="Texture" id=1]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/dialogue-box.png" type="Texture" id=2]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/dialogue-box-pointer.png" type="Texture" id=3]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/search.png" type="Texture" id=4]
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentSearch.gd" type="Script" id=5]
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentTypeList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentTypeLabel.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="ContentSearch" type="VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 139.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+content_type_label_tscn = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 60.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 390.0
+margin_bottom = 50.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer"]
+margin_right = 336.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 40, 40 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/NinePatchRect"]
+anchor_left = 0.904
+anchor_top = 1.0
+anchor_right = 0.904
+anchor_bottom = 1.0
+margin_left = -20.12
+margin_top = 38.0
+margin_right = 19.88
+margin_bottom = 78.0
+rect_rotation = 270.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="SearchButton" type="TextureButton" parent="MarginContainer/HBoxContainer/NinePatchRect"]
+anchor_left = 0.851
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.199997
+rect_min_size = Vector2( 25, 25 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/NinePatchRect"]
+anchor_left = -0.002
+anchor_right = 0.865
+anchor_bottom = 1.0
+margin_left = 0.4
+margin_right = -1.52588e-05
+mouse_filter = 2
+custom_constants/margin_right = 24
+custom_constants/margin_left = 24
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/NinePatchRect/MarginContainer"]
+margin_left = 24.0
+margin_right = 266.0
+margin_bottom = 40.0
+custom_colors/cursor_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 0.0862745, 0.239216, 0.788235, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_styles/normal = SubResource( 1 )
+clear_button_enabled = true
+caret_blink = true
+
+[node name="InfoButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+margin_left = 340.0
+margin_right = 380.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MarginContainer/HBoxContainer/InfoButton"]
+position = Vector2( 0, 20 )
+remote_path = NodePath("../../../../CanvasLayer/Node2D")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+margin_top = 64.0
+margin_right = 400.0
+margin_bottom = 124.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer2"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 390.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 40, 40 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 390.0
+margin_bottom = 50.0
+custom_constants/margin_right = 24
+custom_constants/margin_left = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SearchContentType" type="GridContainer" parent="MarginContainer2/MarginContainer"]
+margin_left = 24.0
+margin_right = 356.0
+margin_bottom = 40.0
+custom_constants/hseparation = 15
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 350, 30 )
+
+[node name="ContentTypeList" parent="CanvasLayer/Node2D" instance=ExtResource( 6 )]
+mouse_filter = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/NinePatchRect/SearchButton" to="." method="_on_search"]
+[connection signal="text_changed" from="MarginContainer/HBoxContainer/NinePatchRect/MarginContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="text_entered" from="MarginContainer/HBoxContainer/NinePatchRect/MarginContainer/LineEdit" to="." method="_on_search"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/InfoButton" to="." method="_on_InfoButton_toggled"]
+[connection signal="change_content_type_dict" from="CanvasLayer/Node2D/ContentTypeList" to="." method="_on_ContentTypeList_change_content_type_dict"]

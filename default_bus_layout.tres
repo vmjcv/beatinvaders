@@ -1,0 +1,68 @@
+[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+
+[sub_resource type="AudioEffectReverb" id=1]
+resource_name = "Reverb"
+damping = 0.0
+hipass = 0.9
+wet = 0.2
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=4]
+resource_local_to_scene = true
+resource_name = "SpectrumAnalyzerMusic"
+buffer_length = 1.0
+fft_size = 3
+
+[sub_resource type="AudioEffectLowPassFilter" id=3]
+resource_name = "LowPassFilter"
+cutoff_hz = 1000.0
+resonance = 1.0
+db = 2
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=5]
+resource_name = "SpectrumAnalyzerSound"
+
+[resource]
+bus/1/name = "SFX"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 1 )
+bus/1/effect/0/enabled = true
+bus/2/name = "Game"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = "Master"
+bus/3/name = "MusicSpectrum"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "Master"
+bus/3/effect/0/effect = SubResource( 4 )
+bus/3/effect/0/enabled = true
+bus/4/name = "Music"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "MusicSpectrum"
+bus/4/effect/0/effect = SubResource( 3 )
+bus/4/effect/0/enabled = false
+bus/5/name = "SoundSpectrum"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = "Master"
+bus/5/effect/0/effect = SubResource( 5 )
+bus/5/effect/0/enabled = true
+bus/6/name = "Sound"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = "SoundSpectrum"

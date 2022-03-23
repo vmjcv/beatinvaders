@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/GameTypeList.gd" type="Script" id=1]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/dialogue-box.png" type="Texture" id=2]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/GameType.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/dialogue-box-pointer.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide_info"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "show_info"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+
+[node name="GameTypeList" type="Control"]
+script = ExtResource( 1 )
+game_type_tscn = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.752941 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -30.0
+margin_right = 50.0
+margin_bottom = 30.0
+texture = ExtResource( 4 )
+expand = true
+flip_h = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.752941 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 49.0
+margin_top = -43.0
+margin_right = 299.0
+margin_bottom = 357.0
+texture = ExtResource( 2 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 230.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/ScrollContainer"]
+margin_right = 198.0
+margin_bottom = 1090.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/hide_info = SubResource( 2 )
+anims/show_info = SubResource( 3 )

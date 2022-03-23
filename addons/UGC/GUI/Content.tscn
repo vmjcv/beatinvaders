@@ -1,0 +1,406 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/UGC/GUI/Content.gd" type="Script" id=1]
+
+[node name="Content" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1912.0
+margin_bottom = 1044.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 1912.0
+margin_bottom = 547.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content"]
+margin_right = 1912.0
+margin_bottom = 25.0
+text = "Content"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 33.0
+margin_right = 1912.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Title"
+
+[node name="Title" type="LineEdit" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer"]
+margin_left = 108.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+placeholder_text = "title"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 86.0
+margin_right = 1912.0
+margin_bottom = 123.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer2"]
+margin_top = 6.0
+margin_right = 100.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 100, 0 )
+text = "Type"
+
+[node name="Type" type="OptionButton" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer2"]
+margin_left = 108.0
+margin_right = 311.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 200, 0 )
+text = "assets/model"
+align = 1
+items = [ "assets/model", null, false, 0, null, "assets/image", null, false, 1, null, "assets/audio", null, false, 2, null, "assets/video", null, false, 3, null, "assets/effect", null, false, 4, null, "assets/scene", null, false, 5, null, "plan/story", null, false, 6, null, "plan/gameplay", null, false, 7, null, "plan/system", null, false, 8, null, "code/solution", null, false, 9, null, "code/special", null, false, 10, null, "code/common", null, false, 11, null ]
+selected = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 131.0
+margin_right = 1912.0
+margin_bottom = 176.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer3"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Dict"
+
+[node name="Dict" type="LineEdit" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer3"]
+margin_left = 108.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+placeholder_text = "dict"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 184.0
+margin_right = 1912.0
+margin_bottom = 229.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer4"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Tag"
+
+[node name="Tag" type="LineEdit" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer4"]
+margin_left = 108.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+placeholder_text = "Tag"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 237.0
+margin_right = 1912.0
+margin_bottom = 282.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer5"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Desc"
+
+[node name="Desc" type="LineEdit" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer5"]
+margin_left = 108.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+placeholder_text = "Desc"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 290.0
+margin_right = 1912.0
+margin_bottom = 335.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer6"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Version"
+
+[node name="VersionSpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer6"]
+margin_left = 108.0
+margin_right = 304.0
+margin_bottom = 45.0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 343.0
+margin_right = 1912.0
+margin_bottom = 388.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer7"]
+margin_top = 10.0
+margin_right = 121.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Screenshot"
+
+[node name="Screenshot" type="LineEdit" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer7"]
+margin_left = 129.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+placeholder_text = "Screenshot"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 396.0
+margin_right = 1912.0
+margin_bottom = 433.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer8"]
+margin_top = 6.0
+margin_right = 100.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 100, 0 )
+text = "License"
+
+[node name="License" type="OptionButton" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer8"]
+margin_left = 108.0
+margin_right = 308.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 200, 0 )
+text = "SBAU"
+align = 1
+items = [ "SBAU", null, false, 0, null, "MIT", null, false, 1, null, "CC0", null, false, 2, null ]
+selected = 0
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 441.0
+margin_right = 1912.0
+margin_bottom = 486.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer9"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "Folder"
+
+[node name="Folder" type="LineEdit" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer9"]
+margin_left = 108.0
+margin_right = 1816.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+placeholder_text = "Folder"
+
+[node name="SelectFolder" type="Button" parent="ScrollContainer/VBoxContainer/Content/HBoxContainer9"]
+margin_left = 1824.0
+margin_right = 1912.0
+margin_bottom = 45.0
+text = "Select"
+
+[node name="UploadContent" type="Button" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 494.0
+margin_right = 1912.0
+margin_bottom = 531.0
+text = "UploadContent"
+align = 0
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/Content"]
+margin_top = 539.0
+margin_right = 1912.0
+margin_bottom = 547.0
+
+[node name="ContentCID" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 555.0
+margin_right = 1912.0
+margin_bottom = 694.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ContentCID"]
+margin_right = 1912.0
+margin_bottom = 25.0
+text = "ContentCID"
+align = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ContentCID"]
+margin_top = 33.0
+margin_right = 1912.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ContentCID/HBoxContainer9"]
+margin_top = 10.0
+margin_right = 124.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "ContentCID"
+
+[node name="ContentCID" type="LineEdit" parent="ScrollContainer/VBoxContainer/ContentCID/HBoxContainer9"]
+margin_left = 132.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "ContentCID"
+
+[node name="DownloadContent" type="Button" parent="ScrollContainer/VBoxContainer/ContentCID"]
+margin_top = 86.0
+margin_right = 1912.0
+margin_bottom = 123.0
+disabled = true
+text = "DownloadContent"
+align = 0
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/ContentCID"]
+margin_top = 131.0
+margin_right = 1912.0
+margin_bottom = 139.0
+
+[node name="ContentPCK" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 702.0
+margin_right = 1912.0
+margin_bottom = 894.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ContentPCK"]
+margin_right = 1912.0
+margin_bottom = 25.0
+text = "ContentPCK"
+align = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ContentPCK"]
+margin_top = 33.0
+margin_right = 1912.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ContentPCK/HBoxContainer9"]
+margin_top = 10.0
+margin_right = 154.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "ContentFolder"
+
+[node name="ContentFolder" type="LineEdit" parent="ScrollContainer/VBoxContainer/ContentPCK/HBoxContainer9"]
+margin_left = 162.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "ContentFolder"
+
+[node name="UploadContentPCK" type="Button" parent="ScrollContainer/VBoxContainer/ContentPCK"]
+margin_top = 86.0
+margin_right = 1912.0
+margin_bottom = 123.0
+disabled = true
+text = "UploadContentPCK"
+align = 0
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ContentPCK"]
+margin_top = 131.0
+margin_right = 1912.0
+margin_bottom = 176.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ContentPCK/HBoxContainer11"]
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 0 )
+text = "PCKCID"
+
+[node name="PCKCID" type="LineEdit" parent="ScrollContainer/VBoxContainer/ContentPCK/HBoxContainer11"]
+margin_left = 108.0
+margin_right = 1912.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "PCKCID"
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/ContentPCK"]
+margin_top = 184.0
+margin_right = 1912.0
+margin_bottom = 192.0
+
+[node name="Platform" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 902.0
+margin_right = 1912.0
+margin_bottom = 1033.0
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/Platform"]
+margin_right = 1912.0
+margin_bottom = 25.0
+text = "Platform"
+align = 1
+
+[node name="SubmitInfo" type="Button" parent="ScrollContainer/VBoxContainer/Platform"]
+margin_top = 33.0
+margin_right = 1912.0
+margin_bottom = 70.0
+disabled = true
+text = "SubmitInfo"
+align = 0
+
+[node name="ClearAll" type="Button" parent="ScrollContainer/VBoxContainer/Platform"]
+margin_top = 78.0
+margin_right = 1912.0
+margin_bottom = 115.0
+text = "ClearAll"
+align = 0
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/Platform"]
+margin_top = 123.0
+margin_right = 1912.0
+margin_bottom = 131.0
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -283.5
+margin_top = -191.5
+margin_right = 283.5
+margin_bottom = 191.5
+rect_min_size = Vector2( 300, 105 )
+window_title = "打开文件或目录"
+mode = 3
+access = 2
+
+[node name="FileDialog2" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -283.5
+margin_top = -191.5
+margin_right = 283.5
+margin_bottom = 191.5
+rect_min_size = Vector2( 300, 105 )
+window_title = "打开文件或目录"
+mode = 3
+access = 2
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Content/HBoxContainer9/SelectFolder" to="." method="_on_SelectFolder_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Content/UploadContent" to="." method="_on_UploadContent_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ContentCID/DownloadContent" to="." method="_on_DownloadContent_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ContentPCK/UploadContentPCK" to="." method="_on_UploadContentPCK_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Platform/SubmitInfo" to="." method="_on_SubmitInfo_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Platform/ClearAll" to="." method="_on_ClearAll_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_Content_FileDialog_dir_selected"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_Content_FileDialog_file_selected"]
+[connection signal="dir_selected" from="FileDialog2" to="." method="_on_Content_FileDialog_dir_selected"]
+[connection signal="file_selected" from="FileDialog2" to="." method="_on_Content_FileDialog_file_selected"]

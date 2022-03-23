@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentSearch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentSummaryList.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentSummary.tscn" type="PackedScene" id=4]
+
+[node name="ContentLibrary" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContentSearch" parent="ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 1024.0
+margin_bottom = 124.0
+size_flags_vertical = 1
+
+[node name="ContentSummaryList" parent="ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 128.0
+margin_right = 1024.0
+margin_bottom = 600.0
+content_summary_scene = ExtResource( 4 )
+
+[connection signal="get_new_list" from="ScrollContainer/HBoxContainer/VBoxContainer/ContentSummaryList" to="ScrollContainer/HBoxContainer/VBoxContainer/ContentSearch" method="_on_ContentSummaryList_get_new_list"]

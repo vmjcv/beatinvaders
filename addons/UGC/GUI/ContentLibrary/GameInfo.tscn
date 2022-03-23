@@ -1,0 +1,370 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/RoleDesc.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/GameInfo.gd" type="Script" id=2]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/circle.svg" type="Texture" id=3]
+[ext_resource path="res://addons/UGC/GUI/GameLibrary/dialogue-box.png" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends VBoxContainer
+
+onready var game_player_label_node = $RichTextLabel
+onready var game_player_node = $HBoxContainer/GamePlayer
+
+var init_player_desc setget set_init_player_desc
+var use_player_desc setget set_use_player_desc
+var now_tab_id
+var nft_id = -1 setget set_nft_id,get_nft_id
+var game_nft_dict
+
+signal select_player
+signal update_game_role_list
+
+func set_init_player_desc(val):
+	init_player_desc = val
+	update_desc()
+	
+	
+func set_use_player_desc(val):
+	use_player_desc = val
+	update_desc()
+	
+func update_desc():
+	if nft_id == -1:
+		game_player_node.visible = false
+		game_player_label_node.bbcode_text = init_player_desc
+	else:
+		game_player_node.visible = true
+		var data = game_nft_dict[nft_id]
+		game_player_label_node.bbcode_text = use_player_desc.format(data.data)
+		game_player_node.path = data.path
+		game_player_node.nft_id = nft_id
+		game_player_node.level = data.level
+		game_player_node.used = data.used
+		game_player_node.game_nft_dict = game_nft_dict
+		
+	
+func set_nft_id(val):
+	nft_id = val
+	update_desc()
+	
+func get_nft_id():
+	return nft_id
+
+
+func _on_SelectPlayer_toggled(button_pressed):
+	emit_signal(\"select_player\")
+
+
+func _on_GamePlayer_unused_nft_id(cur_nft_id):
+	game_player_node.game_nft_dict[cur_nft_id].used = -1
+	emit_signal(\"update_game_role_list\")
+"
+
+[sub_resource type="PackedScene" id=2]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "GameAllPlayer", "margin_right", "margin_bottom", "rect_min_size", "script", "__meta__", "VBoxContainer", "RichTextLabel", "bbcode_enabled", "bbcode_text", "text" ),
+"node_count": 2,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 6, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 0, 0, 0, 7, 7, -1, 7, 1, 0, 2, 5, 3, 6, 8, 7, 9, 8, 10, 8, 5, 9, 0 ),
+"variants": [ 419.0, 230.0, Vector2( 419, 230 ), SubResource( 1 ), {
+}, 150.0, Vector2( 0, 150 ), true, "Defense = {}
+Attack = {}
+HP = {}", {
+"_edit_use_anchors_": false
+} ],
+"version": 2
+}
+
+[node name="GameInfo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+game_role_scene = SubResource( 2 )
+game_role_desc = ExtResource( 1 )
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_top = 182.0
+margin_right = 510.0
+margin_bottom = 418.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="TextureRect2" type="NinePatchRect" parent="HBoxContainer/MarginContainer"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
+margin_left = 20.0
+margin_right = 490.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="TextureProgress" type="TextureProgress" parent="HBoxContainer/MarginContainer/TextureRect2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+size_flags_horizontal = 10
+value = 85.0
+texture_progress = ExtResource( 3 )
+fill_mode = 4
+radial_initial_angle = 180.0
+nine_patch_stretch = true
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer/TextureRect2/TextureProgress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/TextureRect2/TextureProgress/CenterContainer"]
+margin_left = 17.0
+margin_top = 18.0
+margin_right = 33.0
+margin_bottom = 32.0
+text = "85"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer"]
+margin_left = 20.0
+margin_right = 490.0
+margin_bottom = 236.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 460.0
+margin_bottom = 226.0
+size_flags_horizontal = 7
+size_flags_vertical = 6
+
+[node name="Title" type="Label" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 14.0
+text = "First game"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 450.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Type" type="Label" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 223.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "First game"
+align = 1
+valign = 1
+
+[node name="Author" type="Label" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 227.0
+margin_right = 450.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "First game"
+align = 1
+valign = 1
+
+[node name="Desc" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 450.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 180 )
+bbcode_enabled = true
+bbcode_text = "123123123123
+123123123
+123123123
+123123123"
+text = "123123123123
+123123123
+123123123
+123123123"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 514.0
+margin_top = 156.0
+margin_right = 1024.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
+margin_left = 20.0
+margin_right = 490.0
+margin_bottom = 288.0
+size_flags_horizontal = 7
+size_flags_vertical = 6
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+margin_right = 470.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/MarginContainer"]
+margin_right = 470.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 180 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+margin_top = 200.0
+margin_right = 470.0
+margin_bottom = 288.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
+margin_right = 470.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control"]
+margin_right = 470.0
+margin_bottom = 88.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 460.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameLevelContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/GameLevelContainer"]
+margin_right = 77.0
+margin_bottom = 14.0
+text = "Game level:"
+
+[node name="GameLevel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/GameLevelContainer"]
+margin_left = 81.0
+margin_right = 450.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "10"
+align = 2
+valign = 1
+
+[node name="EXPRewardContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 450.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/EXPRewardContainer"]
+margin_right = 74.0
+margin_bottom = 14.0
+text = "EXP reward:"
+
+[node name="EXPReward" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/EXPRewardContainer"]
+margin_left = 78.0
+margin_right = 450.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "0-10"
+align = 2
+valign = 1
+
+[node name="EachDepletePowerContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 450.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/EachDepletePowerContainer"]
+margin_right = 137.0
+margin_bottom = 14.0
+text = "Each depleted power:"
+
+[node name="EachDepletePower" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/EachDepletePowerContainer"]
+margin_left = 141.0
+margin_right = 450.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "1"
+align = 2
+valign = 1
+
+[node name="TotalEntranceFeeContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 450.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/TotalEntranceFeeContainer"]
+margin_right = 118.0
+margin_bottom = 14.0
+text = "Total Entrance fee:"
+
+[node name="TotalEntranceFee" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/Control/MarginContainer/VBoxContainer/TotalEntranceFeeContainer"]
+margin_left = 122.0
+margin_right = 450.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "1"
+align = 2
+valign = 1

@@ -1,0 +1,58 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://addons/UGC/Utils/Nodejs/Client.gd" type="Script" id=1]
+[ext_resource path="res://addons/UGC/Utils/Main/UGC.gd" type="Script" id=2]
+[ext_resource path="res://addons/UGC/Utils/Wallet/Protocol.gd" type="Script" id=3]
+[ext_resource path="res://addons/UGC/Utils/Wallet/Wallet.gd" type="Script" id=4]
+[ext_resource path="res://addons/UGC/Utils/Data/Manage.gd" type="Script" id=5]
+[ext_resource path="res://addons/UGC/Utils/Data/Protocol.gd" type="Script" id=6]
+[ext_resource path="res://addons/UGC/Utils/Platform/Platform.gd" type="Script" id=7]
+[ext_resource path="res://addons/UGC/Utils/Platform/Protocol.gd" type="Script" id=8]
+[ext_resource path="res://addons/UGC/Utils/Game/Autoload.gd" type="Script" id=9]
+[ext_resource path="res://addons/UGC/Utils/Game/LoadUtils.gd" type="Script" id=10]
+[ext_resource path="res://addons/UGC/Utils/Game/Utils.gd" type="Script" id=11]
+[ext_resource path="res://addons/UGC/Utils/Game/InputMap.gd" type="Script" id=12]
+[ext_resource path="res://addons/UGC/Utils/Game/Main.gd" type="Script" id=13]
+[ext_resource path="res://addons/UGC/Utils/Game/Classname.gd" type="Script" id=14]
+
+[node name="UGC" type="Node"]
+script = ExtResource( 2 )
+
+[node name="NodejsClient" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="DataProtocol" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="DataManage" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="WalletProtocol" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="WalletAccount" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="PlatformAccount" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="PlatformProtocol" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="Autoload" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="LoadUtils" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="Utils" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="InputMap" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="Main" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="Classname" type="Node" parent="."]
+script = ExtResource( 14 )

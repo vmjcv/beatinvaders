@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/UGC/GUI/ContentLibrary/ContentSummaryList.gd" type="Script" id=1]
+
+[node name="ContentSummaryList" type="ScrollContainer"]
+margin_right = 359.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 359.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
