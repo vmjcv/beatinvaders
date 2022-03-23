@@ -51,5 +51,6 @@ func select_game(game_node):
 
 
 func v_scrollbar_change(val):
-	if val/(get_v_scrollbar().max_value-get_v_scrollbar().rect_size.y)>=0.95:
+	var scroll_len = get_v_scrollbar().max_value-get_v_scrollbar().rect_size.y
+	if scroll_len>0 and val/scroll_len>=0.95:
 		emit_signal("get_new_list",game_container.get_child_count())
