@@ -15,9 +15,9 @@ func add_autoload(node_name,node_path):
 			node = load(node_path).new()
 		"tscn":
 			node = load(node_path).instance()
-	
 	name_map[node_name] = node
 	get_tree().root.call_deferred("add_child",node)
+	node.name = node_name
 	
 func get_autoload(node_name):
 	return name_map[node_name]
